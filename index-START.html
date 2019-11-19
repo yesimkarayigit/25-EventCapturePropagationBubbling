@@ -42,7 +42,22 @@
 
 <button></button>
 <script>
+  const divs = document.querySelectorAll('div');
+  const button = document.querySelector('button');
 
+  function logText(e) {
+    console.log(this.classList.value);
+    // stop bubbling this event up and click the one that I want 
+    // e.stopPropagation(); 
+  }
+
+  divs.forEach(div => div.addEventListener('click', logText, {capture: false}));
+
+  button.addEventListener('click', () => {
+    console.log('clicking');
+  }, {
+    once: true
+  })
 </script>
 </body>
 </html>
